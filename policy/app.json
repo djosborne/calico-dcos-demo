@@ -1,0 +1,22 @@
+{
+    "id": "x",
+    "instances": 1,
+    "mem": 64,
+    "cpus": 0.1,
+    "container": {
+        "type": "MESOS",
+        "docker": {
+            "image": "djosborne/nginx",
+            "network": "USER",
+            "portMappings": [{"containerPort": 80}]
+        }
+    },
+    "ipAddress": {
+        "networkName": "calico",
+        "labels": {
+            "customer": "a",
+            "group": "production",
+            "app": "x"
+        }
+    }
+}

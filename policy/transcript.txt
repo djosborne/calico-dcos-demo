@@ -1,0 +1,5 @@
+ETCD_ENDPOINTS=http://m1.dcos:2379 calicoctl get ippool -o yaml > pools.yaml
+
+vim pools.yaml
+
+ETCD_ENDPOINTS=http://m1.dcos:2379 calicoctl apply -f pools.yaml
