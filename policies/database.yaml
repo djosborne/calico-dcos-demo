@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: policy
+metadata:
+  name: database-policy
+spec:
+  selector: application == 'database'
+  ingress:
+  - action: allow
+    source:
+      selector: application == 'frontend'
+    destination:
+      port: 6379

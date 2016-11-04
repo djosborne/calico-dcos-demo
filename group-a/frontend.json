@@ -1,0 +1,27 @@
+{
+    "id": "a/frontend",
+    "args": ["/root/frontend.py", "database-a.marathon.containerip.dcos.thisdcos.directory"],
+    "instances": 3,
+    "mem": 64,
+    "cpus": 0.1,
+    "container": {
+        "type": "MESOS",
+        "docker": {
+            "image": "djosborne/hello-dcos:v0.2.0",
+            "network": "USER",
+            "portMappings": [{"containerPort": 80}]
+        }
+    },
+    "ipAddress": {
+        "networkName": "calico",
+        "labels": {
+            "customer": "a",
+            "group": "production",
+            "app": "frontend"
+        }
+    },
+    "labels": {
+        "HAPROXY_GROUP": "external",
+        "HAPROXY_0_VHOST": "a.spring.acme.org"
+    }
+}

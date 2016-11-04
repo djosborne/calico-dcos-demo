@@ -1,0 +1,22 @@
+{
+    "id": "a/database",
+    "instances": 1,
+    "mem": 64,
+    "cpus": 0.1,
+    "container": {
+        "type": "MESOS",
+        "docker": {
+            "image": "redis",
+            "network": "USER",
+            "portMappings": [{"containerPort": 6379}]
+        }
+    },
+    "ipAddress": {
+        "networkName": "calico",
+        "labels": {
+            "customer": "a",
+            "group": "production",
+            "app": "database"
+        }
+    }
+}

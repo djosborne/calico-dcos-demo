@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: policy
+metadata:
+  name: customer-a-policy
+spec:
+  selector: customer=='a'
+  ingress:
+  - action: allow
+    source:
+      selector: customer=='a'
+  egress:
+  - action: allow
+    source:
+      selector: customer=='a'

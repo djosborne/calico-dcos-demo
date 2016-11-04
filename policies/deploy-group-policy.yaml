@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: policy
+metadata:
+  name: group-policy
+spec:
+  selector: group=='production'
+  ingress:
+  - action: deny
+    source:
+      selector: group!='production'
+  egress:
+  - action: deny
+    source:
+      selector: group!='production'
