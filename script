@@ -1,4 +1,6 @@
 0. prereq- install etcd
+
+
 1. install calico from universe
 2. launch group-a app
 3. launch group-b app

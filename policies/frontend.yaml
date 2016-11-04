@@ -3,15 +3,15 @@ kind: policy
 metadata:
   name: frontend-policy
 spec:
-  selector: application == 'frontend'
+  selector: app == 'frontend'
   ingress:
   - action: allow
     source:
-      net: 192.168.65.60/24
+      net: 192.168.65.32/27
     destination:
       port: 80
   egress:
   - action: allow
     destination:
-      selector: application == 'production'
+      selector: app == 'database'
       port: 6379
