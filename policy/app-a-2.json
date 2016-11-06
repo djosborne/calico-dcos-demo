@@ -1,14 +1,14 @@
 {
-    "id": "database",
+    "id": "a/2",
     "instances": 1,
     "mem": 64,
     "cpus": 0.1,
     "container": {
         "type": "MESOS",
         "docker": {
-            "image": "redis",
+            "image": "djosborne/nginx:v1",
             "network": "USER",
-            "portMappings": [{"containerPort": 6379}]
+            "portMappings": [{"containerPort": 80}]
         }
     },
     "ipAddress": {
@@ -16,7 +16,7 @@
         "labels": {
             "customer": "a",
             "group": "production",
-            "app": "database"
+            "app": "2"
         }
     }
 }

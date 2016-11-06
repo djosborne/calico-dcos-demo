@@ -3,10 +3,10 @@ kind: policy
 metadata:
   name: database-policy
 spec:
-  selector: application == 'database'
+  selector: app == 'database'
   ingress:
   - action: allow
     source:
-      selector: application == 'frontend'
+      selector: app == 'frontend'
     destination:
       port: 6379

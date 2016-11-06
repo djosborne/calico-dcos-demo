@@ -9,6 +9,9 @@ docker pull calico/calico-dcos:v0.3.1
 docker pull calico/node:v0.22.0
 docker pull calico/node-libnetwork:v0.9.0
 
+etcdctl set /calico/v1/policy/tier/default/metadata '{"order": 0}'
+
+
 
 1. install etcd
 docker run --detach \
@@ -23,8 +26,11 @@ docker run --detach \
 check what it did:
 node:
 
-cni: /opt/mesosphere/etc/dcos/network/cni
-     /opt/mesosphere/active/cni/
+# Binaries
+/opt/mesosphere/etc/dcos/network/cni
+
+# Configuration
+/opt/mesosphere/active/cni/
 
 2. calicoctl pool
 
@@ -32,8 +38,7 @@ cni: /opt/mesosphere/etc/dcos/network/cni
 3. launch group-b app
 4. policies
 
+docker run --rm --net=calico redis:alpine redis-cli -h database.marathon.containerip.dcos.thisdcos.directory -p 6379 SET views 0
 
-$ redis-cli -h database-a.marathon.containerip.dcos.thisdcos.directory -p 6379 SET hits 0
 
-
-frontend-a.marathon.containerip.dcos.thisdcos.directory
+frontend.marathon.containerip.dcos.thisdcos.directory

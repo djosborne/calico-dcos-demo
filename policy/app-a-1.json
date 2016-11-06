@@ -1,12 +1,12 @@
 {
-    "id": "x",
+    "id": "a/1",
     "instances": 1,
     "mem": 64,
     "cpus": 0.1,
     "container": {
         "type": "MESOS",
         "docker": {
-            "image": "djosborne/nginx",
+            "image": "djosborne/nginx:v1",
             "network": "USER",
             "portMappings": [{"containerPort": 80}]
         }
@@ -16,7 +16,7 @@
         "labels": {
             "customer": "a",
             "group": "production",
-            "app": "x"
+            "app": "1"
         }
     }
 }

@@ -1,0 +1,19 @@
+{
+  "id": "/webserver",
+  "instances": 3,
+  "container": {
+    "type": "DOCKER",
+    "docker": {
+      "image": "nginx",
+      "network": "USER",
+      "portMappings": [{"containerPort": 80}]
+    }
+  },
+  "ipAddress": {
+      "networkName": "calico-2"
+  },
+  "labels": {
+    "HAPROXY_GROUP": "external",
+    "HAPROXY_0_VHOST": "spring.acme.org"
+  }
+}

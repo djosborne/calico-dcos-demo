@@ -1,0 +1,21 @@
+- apiVersion: v1
+  kind: profile
+  metadata:
+    name: 97987a7327b7f375b4dcc1ba7fd52fef54a1824fc466ce979f1721f473518294
+  spec:
+    egress:
+    - action: allow
+      destination: {}
+      source: {}
+    ingress:
+    - action: allow
+      destination: {}
+      source:
+        tag: 97987a7327b7f375b4dcc1ba7fd52fef54a1824fc466ce979f1721f473518294
+    - action: allow
+      destination: {}
+      source:
+        tag: calico
+    - action: allow
+    tags:
+    - 97987a7327b7f375b4dcc1ba7fd52fef54a1824fc466ce979f1721f473518294

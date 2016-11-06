@@ -1,13 +1,13 @@
 {
-    "id": "a/frontend",
-    "args": ["/root/frontend.py", "database-a.marathon.containerip.dcos.thisdcos.directory"],
+    "id": "frontend",
+    "args": ["/root/frontend.py", "database.marathon.containerip.dcos.thisdcos.directory"],
     "instances": 3,
     "mem": 64,
     "cpus": 0.1,
     "container": {
         "type": "MESOS",
         "docker": {
-            "image": "djosborne/hello-dcos:v0.2.0",
+            "image": "djosborne/hello-dcos:v0.3.0",
             "network": "USER",
             "portMappings": [{"containerPort": 80}]
         }
