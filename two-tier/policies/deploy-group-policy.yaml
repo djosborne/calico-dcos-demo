@@ -3,7 +3,7 @@ kind: policy
 metadata:
   name: group-policy
 spec:
-  selector: group=='production' && app == 'database'
+  selector: group=='production'
   ingress:
   - action: deny
     source:

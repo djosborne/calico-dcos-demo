@@ -19,9 +19,5 @@
             "group": "production",
             "app": "frontend"
         }
-    },
-    "labels": {
-        "HAPROXY_GROUP": "external",
-        "HAPROXY_0_VHOST": "b.spring.acme.org"
     }
 }

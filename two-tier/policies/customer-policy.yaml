@@ -1,14 +1,30 @@
-apiVersion: v1
-kind: policy
-metadata:
-  name: customer-a-policy
-spec:
-  selector: customer=='a'
-  ingress:
-  - action: allow
-    source:
-      selector: customer=='a'
-  egress:
-  - action: allow
-    source:
-      selector: customer=='a'
+- apiVersion: v1
+  kind: policy
+  metadata:
+    name: customer-a-policy
+  spec:
+    order: 2
+    selector: customer=='a'
+    ingress:
+    - action: deny
+      source:
+        selector: customer!='a'
+    egress:
+    - action: deny
+      source:
+        selector: customer!='a'
+- apiVersion: v1
+  kind: policy
+  metadata:
+    name: customer-b-policy
+  spec:
+    order: 2
+    selector: customer=='b'
+    ingress:
+    - action: deny
+      source:
+        selector: customer!='b'
+    egress:
+    - action: deny
+      source:
+        selector: customer!='b'
