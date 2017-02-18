@@ -6,12 +6,16 @@ spec:
   selector: app == 'frontend'
   ingress:
   - action: allow
+    protocol: tcp
     source:
       net: 192.168.65.32/27
     destination:
-      port: 80
+      ports:
+      - 80
   egress:
   - action: allow
+    protocol: tcp
     destination:
       selector: app == 'database'
-      port: 6379
+      ports:
+      - 6379

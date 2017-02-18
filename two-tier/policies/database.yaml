@@ -6,7 +6,9 @@ spec:
   selector: app == 'database'
   ingress:
   - action: allow
+    protocol: tcp
     source:
       selector: app == 'frontend'
     destination:
-      port: 6379
+      ports:
+      - 6379

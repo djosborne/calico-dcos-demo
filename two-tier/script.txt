@@ -1,44 +1,29 @@
+1. launch frontend.json and backend.json
+
+2. show dns
+nslookup database.marathon.containerip.dcos.thisdcos.directory
+nslookup frontend.marathon.containerip.dcos.thisdcos.directory
+
+3. can't curl frontend from public slave,
+curl frontend.marathon.containerip.dcos.thisdcos.directory
 
 
-0. prereqs
-m1:
-docker pull etcd
+4. Because default policy prevents it. show public slave policy to allow it
+less two-tier/policies/frontend.yaml
+calicoctl apply -f two-tier/policies/frontend.yaml
 
-a's:
-docker pull calico/calico-dcos:v0.3.1
-docker pull calico/node:v0.22.0
-docker pull calico/node-libnetwork:v0.9.0
-
-etcdctl set /calico/v1/policy/tier/default/metadata '{"order": 0}'
+5. But database can also be compromised by  other tasks in the same network
+docker run --rm --net=calico3 redis:alpine redis-cli -h database.marathon.containerip.dcos.thisdcos.directory -p 6379 SET views 0
+curl frontend.marathon.containerip.dcos.thisdcos.directory
 
 
+6. database policy to block it
+less two-tier/policies/database.yaml
+calicoctl apply -f two-tier/policies/database.yaml
 
-1. install etcd
-	docker run --detach \
-		--net=host \
-		--name calico-etcd quay.io/coreos/etcd:v2.0.11 \
-		--advertise-client-urls "http://m1.dcos:2379" \
-		--listen-client-urls "http://m1.dcos:2379,http://127.0.0.1:2379"
-
-
-
-1. install calico from universe
-check what it did:
-node:
-
-# Binaries
-/opt/mesosphere/etc/dcos/network/cni
-
-# Configuration
-/opt/mesosphere/active/cni/
-
-2. calicoctl pool
-
-2. launch group-a app
-3. launch group-b app
-4. policies
-
-docker run --rm --net=calico redis:alpine redis-cli -h database.marathon.containerip.dcos.thisdcos.directory -p 6379 SET views 0
+7. demo no longer able to access it
+docker run --rm --net=calico3 redis:alpine redis-cli -h database.marathon.containerip.dcos.thisdcos.directory -p 6379 SET views 0
+curl frontend.marathon.containerip.dcos.thisdcos.directory
 
 
 frontend.marathon.containerip.dcos.thisdcos.directory

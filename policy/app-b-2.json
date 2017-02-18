@@ -12,7 +12,7 @@
         }
     },
     "ipAddress": {
-        "networkName": "calico-2",
+        "networkName": "calico2",
         "labels": {
             "customer": "b",
             "group": "production",

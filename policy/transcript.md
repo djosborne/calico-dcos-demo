@@ -1,3 +1,5 @@
+demo prereqs:
+
 export ETCD_ENDPOINTS=http://m1.dcos:2379
 # http://mesos.apache.org/documentation/latest/cni/#accessing-container-network-namespace
 
@@ -13,7 +15,7 @@ app-a-2.json
 
 # Enter app's 1's NS
 ls /var/run/mesos/isolators/network/cni/
-sudo ln -s ls /var/run/mesos/isolators/network/cni/*/ns /var/run/netns/a1
+sudo ln -s ls /var/run/mesos/isolators/network/cni/<tab>/ns /var/run/netns/a1
 
 # Demo: Inspect application namespace:
 sudo ip netns exec a1 ifconfig

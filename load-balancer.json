@@ -10,7 +10,7 @@
     }
   },
   "ipAddress": {
-      "networkName": "calico-2"
+      "networkName": "calico"
   },
   "labels": {
     "HAPROXY_GROUP": "external",
